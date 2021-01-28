@@ -1,6 +1,6 @@
 # Get.JIRA-USersDetailsFromGroup()
 
-1. The routine query and get all the details for usernames belonging to a specific JIRA group
+1. The routine query and get all the details for users belonging to a specific JIRA group
 1. The routine : GetUsersDetailFromGroup returns a list of objects (objects of type Group) List<GroupInfo>
 2. & write result to file (Json style) : List-Details-from-group-{0}.txt" in the current directory
 3. & write result to file (text file)  : List-accounts-from-group-{0}.txt" in the current directory
