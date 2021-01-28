@@ -25,7 +25,7 @@
 3. routine can be used and referenced with the JiraLib.dll reference in your c# project . Download the nuget package : https://www.nuget.org/packages/RestAPI-JIRA-Lib/
 and make  call to this method in your code.
 4. is used with C# code 
-5  Developed and tested in Visual Studio 2019.
-6 can be used as so , whitout reference to library, but it is then needed to insert the method GetUSersDetailsFromGroup()
-code of routine and rebuild the project. sample code at 
+5.  Developed and tested in Visual Studio 2019.
+6. can be used as so , whitout reference to library JiraLib.dll, but it is then needed, to insert the method GetUSersDetailsFromGroup()
+code of routine in your project and rebuild the project.  
 .
