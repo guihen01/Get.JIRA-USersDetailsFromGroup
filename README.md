@@ -36,4 +36,5 @@ exemple d'execution (sample running) :
 
 ![alt text](https://github.com/guihen01/Get.JIRA-USersDetailsFromGroup/blob/main/Capture-2.PNG "Logo Title Text 1")
 
+![alt text](https://github.com/guihen01/Get.JIRA-USersDetailsFromGroup/blob/main/Capture3.PNG "Logo Title Text 1")
 
