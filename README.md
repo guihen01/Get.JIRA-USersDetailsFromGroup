@@ -7,7 +7,7 @@
    
   public static async Task<List<GroupInfo>> GetUSersDetailFromGroup(string username, string password, string urlbase, string group)
   
-   ![alt text](https://github.com/guihen01/RestApi-JIRA-Lib/blob/main/GetAllUsernameFromGroup/Capture-1.PNG "Logo Title Text 1")
+   ![alt text](https://github.com/guihen01/Get.JIRA-USersDetailsFromGroup/blob/main/Capture1.PNG "Logo Title Text 1")
   
 # Publication
 
