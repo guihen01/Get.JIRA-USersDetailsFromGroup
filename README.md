@@ -1,4 +1,5 @@
 # Get.JIRA-USersDetailsFromGroup
+
 1. The routine : GetUsersDetailFromGroup returns a list of objects (objects of type Group) List<GroupInfo>
 2. & write result to file (Json style) : List-Details-from-group-{0}.txt" 
 3. & write result to file (text file)  : List-accounts-from-group-{0}.txt"
@@ -6,3 +7,10 @@
    
   public static async Task<List<GroupInfo>> GetUSersDetailFromGroup(string username, string password, string urlbase, string group)
         
+# Publication
+
+1. Package distributed as a nuget package at : https://www.nuget.org/packages/Get.JIRA-USersDetailsFromGroup/
+
+# Dependency
+
+1. nuget package Newtonsoft.Json;
