@@ -17,3 +17,10 @@
 # Dependency
 
 1. nuget package Newtonsoft.Json;
+
+# Inplementation
+
+1. This method is part of a Library of jira routines (Jira methods) : JiraLib.dll based on REST API, but can be used without LibJira.dll
+2. Included in JiraLib.dll and code source is in this repository
+3. is used with C# code 
+4  Developed and tested in Visual Studio 2019.
