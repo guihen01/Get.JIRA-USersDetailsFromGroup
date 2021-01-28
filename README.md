@@ -16,7 +16,9 @@
 
 # Dependency
 
-1. nuget package Newtonsoft.Json;
+1. NETCoreApp 3.1
+2. Newtonsoft.Json (>= 12.0.3)
+3. the routine has been build with NETCoreApp 3. 1 , but can also be rebuild as needed with NetCoreApp.4 o 5 
 
 # Inplementation
 
