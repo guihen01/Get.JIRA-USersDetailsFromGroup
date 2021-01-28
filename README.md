@@ -1,4 +1,4 @@
-# Get.JIRA-USersDetailsFromGroup()
+# GetUSersDetailsFromGroup()
 
 1. The routine query and get all the details for users belonging to a specific JIRA group
 1. The routine : GetUsersDetailFromGroup returns a list of objects (objects of type Group) List<GroupInfo>
@@ -22,5 +22,10 @@
 
 1. This method is part of a Library of jira routines (Jira methods) : JiraLib.dll based on REST API, but can be used without LibJira.dll
 2. Included in JiraLib.dll and code source is in this repository
-3. is used with C# code 
-4  Developed and tested in Visual Studio 2019.
+3. routine can be used and referenced with the JiraLib.dll reference in your c# project . Download the nuget package : https://www.nuget.org/packages/RestAPI-JIRA-Lib/
+and make  call to this method in your code.
+4. is used with C# code 
+5  Developed and tested in Visual Studio 2019.
+6 can be used as so , whitout reference to library, but it is then needed to insert the method GetUSersDetailsFromGroup()
+code of routine and rebuild the project. sample code at 
+.
