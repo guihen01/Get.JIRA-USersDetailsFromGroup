@@ -31,3 +31,5 @@ and make  call to this method in your code.
 6. can be used as so , whitout reference to library JiraLib.dll, but it is then needed, to insert the method GetUSersDetailsFromGroup()
 code of routine in your project and rebuild the project.  
 .
+# Run 
+exemple d'execution (sample running) : 
