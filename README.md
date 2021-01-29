@@ -33,7 +33,7 @@ code of routine in your project and rebuild the project.
 
 # How to use it 
 
- ![alt text](https://github.com/guihen01/Get.JIRA-USersDetailsFromGroup/blob/main/Capture-HowTo-1.PNG"Logo Title Text 1")
+ ![alt text](https://github.com/guihen01/Get.JIRA-USersDetailsFromGroup/blob/main/Capture-HowTo-1.PNG "Logo Title Text 1")
  
 using JiraLib;
 using System.Collections.Generic;
