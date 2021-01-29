@@ -30,7 +30,11 @@ and make  call to this method in your code.
 5.  Developed and tested in Visual Studio 2019.
 6. can be used as so , whitout reference to library JiraLib.dll, but it is then needed, to insert the method GetUSersDetailsFromGroup()
 code of routine in your project and rebuild the project.  
-.
+
+# How to use it 
+
+ ![alt text]( "Logo Title Text 1")
+
 # Run 
 exemple d'execution (sample running) : 
 
