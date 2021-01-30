@@ -9,7 +9,7 @@ using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections.Generic;
-
+using System.Runtime.Serialization;
 
 namespace Get.JIRA.usersGroups
 {
@@ -97,16 +97,27 @@ namespace Get.JIRA.usersGroups
             string url;
             url = urlbase + "/rest/api/2/group/member?groupname=" + group;
 
-            using var client = new HttpClient();
-            var base64String = Convert.ToBase64String(Encoding.ASCII.GetBytes($"{username}:{password}"));
-            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", base64String);
+            //Send the request via Http protocol to the JIRA server & Get the response in a string (the string is Json formated)
+            //------------------------------------------------------------------------------------------------------------------
+            string result;
+            result = await GetHttpResponse(username, password, url);
 
-            var response = await client.GetAsync(url);
-            Console.WriteLine(response.StatusCode);
-            string result = await response.Content.ReadAsStringAsync();
-            client.Dispose();
-
-            JObject Ob = JObject.Parse(result);
+            // Parse the string json to get details fields on the JIRA group users
+            //--------------------------------------------------------------------
+            JObject Ob;
+            Ob = new JObject();
+            try
+            {
+                Ob = JObject.Parse(result);
+            }
+            catch (Newtonsoft.Json.JsonReaderException e)  //https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_JsonException.htm
+            {
+                Console.WriteLine("----------------------------------------------------------------------");
+                Console.WriteLine(e.Message);
+                Console.WriteLine(" Bad Json file format, du to errors on username, or password or bad url");
+                Console.WriteLine("------------------------------------------------------------------------");
+            }
+             
 
             // write list of group details in file " List-details-from-group-{0}.json 
             //-------------------------------------------------------------------------------
@@ -228,5 +239,88 @@ namespace Get.JIRA.usersGroups
 
             return GrList;
         }
+
+        public static async Task<string>  GetHttpResponse(string username, string password, string url)
+        {
+            using var client = new HttpClient();
+            var base64String = Convert.ToBase64String(Encoding.ASCII.GetBytes($"{username}:{password}"));
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", base64String);
+
+            HttpResponseMessage response;
+            response = new HttpResponseMessage();
+            string result = " ";
+            try
+            {
+                response = await client.GetAsync(url);
+                Console.WriteLine(response.StatusCode);
+                if (response == null)
+                {
+                    throw new ArgumentNullException();
+                }
+                if (response.StatusCode == HttpStatusCode.Unauthorized) //https://docs.microsoft.com/en-us/dotnet/api/system.net.httpstatuscode?view=net-5.0
+                {
+                    throw new Unauthorized();
+                }
+
+                result = await response.Content.ReadAsStringAsync();
+                client.Dispose();
+            }
+            catch (Unauthorized e)
+            {
+                Console.WriteLine(e.Message);
+                Console.WriteLine("account not authorized to JIRA or bad account ");
+
+            }
+            catch (ArgumentNullException e)
+            {
+                Console.WriteLine(e.Message);
+                Console.WriteLine("Response is null");
+            }
+            catch (UnauthorizedAccessException e)
+            {
+                Console.WriteLine(e.Message);
+
+            }
+            catch (InvalidOperationException e)
+            {
+                Console.WriteLine("The requestUri must be an absolute URI or BaseAddress must be set.");
+                Console.WriteLine(e.Message);
+            }
+            catch (HttpRequestException e)
+            {
+                Console.WriteLine("The request failed due to an underlying issue such as network connectivity, DNS failure, server certificate validation or timeout");
+                Console.WriteLine(e.Message);
+            }
+            catch (TaskCanceledException e)
+            {
+                Console.WriteLine(".NET Core and .NET 5.0 and later only: The request failed due to timeout.");
+                Console.WriteLine(e.Message);
+            }
+
+            return result;
+        }
+
     }
+
+    [Serializable]
+    internal class Unauthorized : Exception
+    {
+        public Unauthorized()
+        {
+        }
+
+        public Unauthorized(string message) : base(message)
+        {
+        }
+
+        public Unauthorized(string message, Exception innerException) : base(message, innerException)
+        {
+        }
+
+        protected Unauthorized(SerializationInfo info, StreamingContext context) : base(info, context)
+        {
+        }
+    }
+
+
 }
